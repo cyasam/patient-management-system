@@ -23,6 +23,8 @@ export const UpcomingAppointments = (props: Props) => {
         {appointments.map((appointment: any, index: number) => {
           const hasDivider = index < appointments.length - 1;
 
+          const patientName = `${appointment.patientData.firstName} ${appointment.patientData.lastName}`;
+
           return (
             <ListItem divider={hasDivider} key={appointment.id}>
               <Box
@@ -40,7 +42,7 @@ export const UpcomingAppointments = (props: Props) => {
                   }}
                 >
                   <ListItemText
-                    primary={appointment.patientName}
+                    primary={patientName}
                     primaryTypographyProps={{ variant: 'subtitle1' }}
                     secondary={appointment.title}
                     secondaryTypographyProps={{ variant: 'body2' }}
