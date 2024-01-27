@@ -1,7 +1,10 @@
 export const fetchPatient = async (id: string) => {
-  const response = await fetch(`http://localhost:3000/api/patients/${id}`, {
-    cache: 'no-cache',
-  });
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/patients/${id}`,
+    {
+      cache: 'no-cache',
+    }
+  );
 
   const { data } = await response.json();
 
@@ -10,7 +13,7 @@ export const fetchPatient = async (id: string) => {
 
 export const fetchPatientFiles = async (id: string) => {
   const response = await fetch(
-    `http://localhost:3000/api/patients/${id}/upload`,
+    `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/patients/${id}/upload`,
     {
       cache: 'no-cache',
     }
@@ -23,7 +26,7 @@ export const fetchPatientFiles = async (id: string) => {
 
 export const fetchPatientAppointments = async (doctorId: string) => {
   const response = await fetch(
-    `http://localhost:3000/api/appointments?doctorId=${doctorId}`,
+    `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/appointments?doctorId=${doctorId}`,
     {
       cache: 'no-cache',
     }
@@ -39,7 +42,7 @@ export const fetchPatientAppointmentsByPatientId = async (
   doctorId: string
 ) => {
   const response = await fetch(
-    `http://localhost:3000/api/appointments?patientId=${patientId}&doctorId=${doctorId}`,
+    `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/appointments?patientId=${patientId}&doctorId=${doctorId}`,
     {
       cache: 'no-cache',
     }

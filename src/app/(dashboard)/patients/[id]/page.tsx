@@ -12,6 +12,8 @@ interface Props {
   params: { id: string };
 }
 
+export const dynamic = 'force-dynamic';
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const data = await fetchPatient(params.id);
 

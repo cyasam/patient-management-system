@@ -1,10 +1,13 @@
 import { getAuth } from 'firebase/auth';
 
 export const login = async (email: string, password: string) => {
-  const response = await fetch(`http://localhost:3000/api/auth/login`, {
-    method: 'POST',
-    body: JSON.stringify({ email, password }),
-  });
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/auth/login`,
+    {
+      method: 'POST',
+      body: JSON.stringify({ email, password }),
+    }
+  );
 
   if (!response.ok) {
     const data: any = await response.json();
@@ -17,7 +20,7 @@ export const login = async (email: string, password: string) => {
 };
 
 export const logout = async () => {
-  return await fetch(`http://localhost:3000/api/auth/logout`);
+  return await fetch(`${process.env.NEXT_PUBLIC_VERCEL_URL}/api/auth/logout`);
 };
 
 export const checkAuth = async () => {

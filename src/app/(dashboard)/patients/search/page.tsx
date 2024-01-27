@@ -22,12 +22,14 @@ export function generateMetadata({ searchParams }: Props): Metadata {
   };
 }
 
+export const dynamic = 'force-dynamic';
+
 export default async function PatientSearch({ searchParams }: Props) {
   let query = searchParams?.query;
   let filterBy = searchParams?.filterBy;
 
   const response = await fetch(
-    `http://localhost:3000/api/patients?query=${query}&filterBy=${filterBy}`,
+    `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/patients?query=${query}&filterBy=${filterBy}`,
     { cache: 'no-cache' }
   );
 

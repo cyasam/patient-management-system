@@ -8,10 +8,15 @@ export const metadata: Metadata = {
   description: mainPageTitle,
 };
 
+export const dynamic = 'force-dynamic';
+
 export default async function PatientsPage() {
-  const response = await fetch('http://localhost:3000/api/patients', {
-    next: { revalidate: 60 },
-  });
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/patients`,
+    {
+      cache: 'no-cache',
+    }
+  );
 
   const { data } = await response.json();
 
