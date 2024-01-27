@@ -12,6 +12,7 @@ import {
 import { LinkRounded } from '@mui/icons-material';
 import Loading from '@/components/common/Loading';
 import { fetchPatientFiles } from '@/utils/patients/fetch';
+import { formatDate } from '@/utils';
 
 const getFileSize = (size: number) => {
   if (size < 1024 ** 2) {
@@ -19,14 +20,6 @@ const getFileSize = (size: number) => {
   }
 
   return `${(size / 1024 ** 2).toFixed(2)} MB`;
-};
-
-const formatDate = (dateString: string) => {
-  const date = new Date(dateString);
-  return Intl.DateTimeFormat('en-US', {
-    dateStyle: 'long',
-    timeStyle: 'short',
-  }).format(date);
 };
 
 interface Props {

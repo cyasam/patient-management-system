@@ -6,6 +6,7 @@ import {
   ListItem,
   ListItemText,
 } from '@mui/material';
+import { formatDate } from '@/utils';
 
 interface Props {
   appointments: any;
@@ -55,7 +56,7 @@ export const UpcomingAppointments = (props: Props) => {
                     }}
                     disableTypography={true}
                   >
-                    {appointment.date}
+                    {formatDate(appointment.date)}
                   </ListItemText>
                 </Box>
               </Box>
